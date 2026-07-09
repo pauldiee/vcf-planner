@@ -10,6 +10,18 @@ This is **pauldiee's fork** of `lcoscia/vcf-planner` (remote `upstream`), used a
 - PRs target `lcoscia/vcf-planner`; push branches to `origin` (the fork).
 - Sync the fork with `git fetch upstream && git merge upstream/main` on `main` (the CLAUDE.md commit stays on top).
 
+### Previewing changes — GitHub Pages on the fork
+
+The fork hosts GitHub Pages from the **`pages-preview`** branch (root path) at **https://pauldiee.github.io/vcf-planner/**. To preview a change live, merge its feature branch into `pages-preview` and push:
+
+```bash
+git checkout pages-preview && git merge <feature-branch> && git push origin pages-preview
+```
+
+- `pages-preview` intentionally has the `CNAME` file **deleted** — `main`'s CNAME points at upstream's custom domain (`vcfplanning.lcoscia.fr`) and would break the fork's Pages. Never re-add it when merging.
+- `pages-preview` is a throwaway integration branch: it may contain several unmerged feature branches at once and lag or lead `main`. Never base PR branches on it.
+- Local preview (alternative): serve over HTTP as described under Commands. Note: no Python/Node is currently installed on this machine, so Pages is the primary preview path.
+
 ## Commands
 
 No build step, no bundler — the website is `index.html` + native ES modules in `core/`.
